@@ -1,0 +1,43 @@
+<!doctype html>
+<link href="/src/timeout-anchor.html" rel="import">
+
+<h1>Timeout Elements</h1>
+
+<h2>Timeout Anchor</h2>
+
+<h3>Basic</h3>
+(default 3s)
+<%= example <<EOC
+<a is="timeout-anchor" href=".">timeout anchor</a>
+EOC
+%>
+
+<h3>Specifying timeout duration</h3>
+
+<%= example <<EOC
+<a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
+EOC
+%>
+
+<h3>Regular anchor attributes</h3>
+
+<%= example <<EOC
+<a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
+EOC
+%>
+
+<h3>Horizontal bar indicator</h3>
+
+<%= example <<EOC
+<a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+EOC
+%>
+
+<h3>Case a has position: absolute</h3>
+
+<p>In this case, indicator is not at expected position. Welcome advice!</p>
+
+<%= example <<EOC
+<a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+EOC
+%>
