@@ -1,6 +1,11 @@
 Timeout Elements
 ================
 
+Custom Elements which has timeout feature.
+
+Demo is here:
+http://kitaitimakoto.github.io/timeout-elements/
+
 Deployment
 ----------
 
