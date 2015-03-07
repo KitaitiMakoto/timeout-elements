@@ -1,3 +1,5 @@
+require 'lib/sprockets2-es6'
+
 ###
 # Compass
 ###
