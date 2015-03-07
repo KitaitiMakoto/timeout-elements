@@ -85,4 +85,12 @@ helpers do
       all << tag(:link, { :href => asset_path(:html, source) }.update(options))
     end
   end
+
+  def example(code)
+    <<EOH
+<pre><code>
+#{escape_html code}</code></pre>
+#{code}
+EOH
+  end
 end
