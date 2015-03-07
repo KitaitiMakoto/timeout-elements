@@ -9,7 +9,10 @@ title: Timeout Elements
 <h3>Basic</h3>
 (default 3s)
 <%= example <<EOC
-<a is="timeout-anchor" href=".">timeout anchor</a>
+<!-- Declare as "timeout-anchor" -->
+<a is="timeout-anchor"href=".">
+  timeout anchor
+</a>
 EOC
 %>
 
@@ -30,7 +33,11 @@ EOC
 <h3>Horizontal bar indicator</h3>
 
 <%= example <<EOC
-<a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+<!-- "horizontal-bar" indicator is also available -->
+<a is="timeout-anchor" href="."
+   indicator="horizontal-bar">
+  horizontal bar indicator
+</a>
 EOC
 %>
 
@@ -91,14 +98,20 @@ EOC
       }
     }
   </style>
-  <p class="indicator" hidden><!-- Need indicator class and hidden attribute -->
+  <!-- Indicator requries "indicator" class and "hidden" attribute -->
+  <p class="indicator" hidden>
     <span>&#9679;</span>
     <span>&#9679;</span>
     <span>&#9679;</span>
   </p>
 </template>
 
-<a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
+<!-- This is passed to document.querySelector() -->
+<a is="timeout-anchor" href="."
+   indicator-template="#my-indicator"
+   timeout="12">
+  Custom indicator
+</a>
 EOC
 %>
 
