@@ -24,9 +24,15 @@
 
 <h3>Basic</h3>
 (default 3s)
-<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;!-- Declare as &quot;timeout-anchor&quot; --&gt;
+&lt;a is=&quot;timeout-anchor&quot;href=&quot;.&quot;&gt;
+  timeout anchor
+&lt;&#x2F;a&gt;
 </code></pre>
-<div class="demo"><div><a is="timeout-anchor" href=".">timeout anchor</a>
+<div class="demo"><div><!-- Declare as "timeout-anchor" -->
+<a is="timeout-anchor"href=".">
+  timeout anchor
+</a>
 </div></div>
 
 
@@ -48,9 +54,17 @@
 
 <h3>Horizontal bar indicator</h3>
 
-<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;!-- &quot;horizontal-bar&quot; indicator is also available --&gt;
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;
+   indicator=&quot;horizontal-bar&quot;&gt;
+  horizontal bar indicator
+&lt;&#x2F;a&gt;
 </code></pre>
-<div class="demo"><div><a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+<div class="demo"><div><!-- "horizontal-bar" indicator is also available -->
+<a is="timeout-anchor" href="."
+   indicator="horizontal-bar">
+  horizontal bar indicator
+</a>
 </div></div>
 
 
@@ -110,14 +124,20 @@
       }
     }
   &lt;&#x2F;style&gt;
-  &lt;p class=&quot;indicator&quot; hidden&gt;&lt;!-- Need indicator class and hidden attribute --&gt;
+  &lt;!-- Indicator requries &quot;indicator&quot; class and &quot;hidden&quot; attribute --&gt;
+  &lt;p class=&quot;indicator&quot; hidden&gt;
     &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
     &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
     &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
   &lt;&#x2F;p&gt;
 &lt;&#x2F;template&gt;
 
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator-template=&quot;#my-indicator&quot; timeout=&quot;12&quot;&gt;Custom indicator&lt;&#x2F;a&gt;
+&lt;!-- This is passed to document.querySelector() --&gt;
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;
+   indicator-template=&quot;#my-indicator&quot;
+   timeout=&quot;12&quot;&gt;
+  Custom indicator
+&lt;&#x2F;a&gt;
 </code></pre>
 <div class="demo"><div><template id="my-indicator">
   <style>
@@ -171,14 +191,20 @@
       }
     }
   </style>
-  <p class="indicator" hidden><!-- Need indicator class and hidden attribute -->
+  <!-- Indicator requries "indicator" class and "hidden" attribute -->
+  <p class="indicator" hidden>
     <span>&#9679;</span>
     <span>&#9679;</span>
     <span>&#9679;</span>
   </p>
 </template>
 
-<a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
+<!-- This is passed to document.querySelector() -->
+<a is="timeout-anchor" href="."
+   indicator-template="#my-indicator"
+   timeout="12">
+  Custom indicator
+</a>
 </div></div>
 
 
