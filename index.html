@@ -7,18 +7,183 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     
     <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Welcome to Middleman</title>
+    <title>Timeout Elements</title>
     
     <link href="stylesheets/normalize.css" rel="stylesheet" type="text/css" /><link href="stylesheets/all.css" rel="stylesheet" type="text/css" />
+    <link href="html/timeout-anchor.html" rel="import" />
     <script src="javascripts/all.js" type="text/javascript"></script>
   </head>
   
   <body class="index">
-    <div class="welcome">
-  <h1>Middleman is Watching</h1>
-  <p class="doc">
-    <a href="http://middlemanapp.com/">Read Online Documentation</a>
-  </p><!-- .doc -->
-</div><!-- .welcome -->
+    <h1>Timeout Elements</h1>
+
+<h2>Timeout Anchor</h2>
+
+<h3>Basic</h3>
+(default 3s)
+<pre><code>
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
+</code></pre>
+<a is="timeout-anchor" href=".">timeout anchor</a>
+
+
+
+<h3>Specifying timeout duration</h3>
+
+<pre><code>
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
+</code></pre>
+<a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
+
+
+
+<h3>Regular anchor attributes</h3>
+
+<pre><code>
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
+</code></pre>
+<a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
+
+
+
+<h3>Horizontal bar indicator</h3>
+
+<pre><code>
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
+</code></pre>
+<a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+
+
+
+<h3>Custom indicator</h3>
+
+<p>You can define and use your own indicator. Currently JavaScript is not supported.</p>
+
+<pre><code>
+&lt;template id=&quot;my-indicator&quot;&gt;
+  &lt;style&gt;
+    :host .indicator {
+      position: absolute; &#x2F;* Highly recommended to set position to absolute *&#x2F;
+      display: block;
+      width: 6em;
+      height: 1em;
+    }
+    :host .indicator[hidden] span {
+      display: none;
+    }
+    :host .indicator span {
+      width: 1em;
+      height: 1em;
+      color: green;
+      opacity: 0;
+    }
+    :host .indicator span:nth-child(1) {
+      -webkit-animation: reveal 3s infinite;
+      animation: reveal 2s 0s infinite;
+    }
+    :host .indicator span:nth-child(2) {
+      -webkit-animation: reveal 3s 1s infinite;
+      animation: reveal 2s 2s infinite;
+    }
+    :host .indicator span:nth-child(3) {
+      -webkit-animation: reveal 3s 2s infinite;
+      animation: reveal 2s 4s infinite;
+    }
+    @-webkit-keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  &lt;&#x2F;style&gt;
+  &lt;p class=&quot;indicator&quot; hidden&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;template&gt;
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator-template=&quot;#my-indicator&quot; timeout=&quot;12&quot;&gt;Custom indicator&lt;&#x2F;a&gt;
+</code></pre>
+<template id="my-indicator">
+  <style>
+    :host .indicator {
+      position: absolute; /* Highly recommended to set position to absolute */
+      display: block;
+      width: 6em;
+      height: 1em;
+    }
+    :host .indicator[hidden] span {
+      display: none;
+    }
+    :host .indicator span {
+      width: 1em;
+      height: 1em;
+      color: green;
+      opacity: 0;
+    }
+    :host .indicator span:nth-child(1) {
+      -webkit-animation: reveal 3s infinite;
+      animation: reveal 2s 0s infinite;
+    }
+    :host .indicator span:nth-child(2) {
+      -webkit-animation: reveal 3s 1s infinite;
+      animation: reveal 2s 2s infinite;
+    }
+    :host .indicator span:nth-child(3) {
+      -webkit-animation: reveal 3s 2s infinite;
+      animation: reveal 2s 4s infinite;
+    }
+    @-webkit-keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+  <p class="indicator" hidden><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></p>
+</template>
+<a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
+
+
+
+<h3>Case a has position: absolute</h3>
+
+<p>In this case, indicator is not at expected position. Welcome advice!</p>
+
+<pre><code>
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
+</code></pre>
+<a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+
+
+
   </body>
 </html>
