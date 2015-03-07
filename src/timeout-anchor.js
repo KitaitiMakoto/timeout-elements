@@ -87,10 +87,17 @@
         if ((timeout === null) || (isNaN(timeout))) {
             this.timeout = defaultTimeout;
         }
-        var indicatorId = this.getAttribute("indicator");
-        var indicatorTemplate = ownerDocument.getElementById(indicatorId);
-        if (indicatorTemplate === null) {
-            indicatorTemplate = ownerDocument.getElementsByTagName("template")[0];
+        var indicatorSelector = this.getAttribute("indicator-template");
+        var indicatorTemplate;
+        if (indicatorSelector) {
+            indicatorTemplate = document.querySelector(indicatorSelector);
+        }
+        if (! indicatorTemplate) {
+            var indicatorId = this.getAttribute("indicator");
+            indicatorTemplate = ownerDocument.getElementById(indicatorId);
+            if (indicatorTemplate === null) {
+                indicatorTemplate = ownerDocument.getElementsByTagName("template")[0];
+            }
         }
         this.shadowRoot.appendChild(indicatorTemplate.content.cloneNode(true));
         this.addEventListener("mouseover", startCountdown.bind(this));
