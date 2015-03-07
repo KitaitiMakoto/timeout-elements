@@ -29,7 +29,7 @@ License
   <br />
   To the extent possible under law,
   <a rel="dct:publisher"
-     href="http://kitaitimakoto.github.io/timeout-elements/">
+     href="http://github.com/KitaitiMakoto">
     <span property="dct:title">Kitaiti, Makoto</span></a>
   has waived all copyright and related or neighboring rights to
   <span property="dct:title">Timeout Elements</span>.
