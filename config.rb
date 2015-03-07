@@ -90,9 +90,8 @@ helpers do
 
   def example(code)
     <<EOH
-<pre><code>
-#{escape_html code}</code></pre>
-#{code}
+<pre class="code"><code>#{escape_html code}</code></pre>
+<div class="example">#{code}</div>
 EOH
   end
 end
