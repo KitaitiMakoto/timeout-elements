@@ -8,7 +8,10 @@
     
     <!-- Use title if it's in the page YAML frontmatter -->
     <title>Timeout Elements</title>
-    
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <link href="stylesheets/normalize.css" rel="stylesheet" type="text/css" /><link href="stylesheets/all.css" rel="stylesheet" type="text/css" />
     <link href="html/timeout-anchor.html" rel="import" />
     <script src="javascripts/all.js" type="text/javascript"></script>
@@ -21,41 +24,41 @@
 
 <h3>Basic</h3>
 (default 3s)
-<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><a is="timeout-anchor" href=".">timeout anchor</a>
-</div>
+<div class="demo"><div><a is="timeout-anchor" href=".">timeout anchor</a>
+</div></div>
 
 
 <h3>Specifying timeout duration</h3>
 
-<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
-</div>
+<div class="demo"><div><a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
+</div></div>
 
 
 <h3>Regular anchor attributes</h3>
 
-<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
-</div>
+<div class="demo"><div><a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
+</div></div>
 
 
 <h3>Horizontal bar indicator</h3>
 
-<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
-</div>
+<div class="demo"><div><a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+</div></div>
 
 
 <h3>Custom indicator</h3>
 
 <p>You can define and use your own indicator. Currently JavaScript is not supported.</p>
 
-<pre class="code"><code>&lt;template id=&quot;my-indicator&quot;&gt;
+<pre class="code"><code class="html">&lt;template id=&quot;my-indicator&quot;&gt;
   &lt;style&gt;
     :host .indicator {
       position: absolute; &#x2F;* Highly recommended to set position to absolute *&#x2F;
@@ -107,11 +110,16 @@
       }
     }
   &lt;&#x2F;style&gt;
-  &lt;p class=&quot;indicator&quot; hidden&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;
+  &lt;p class=&quot;indicator&quot; hidden&gt;&lt;!-- Need indicator class and hidden attribute --&gt;
+    &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
+    &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
+    &lt;span&gt;&amp;#9679;&lt;&#x2F;span&gt;
+  &lt;&#x2F;p&gt;
 &lt;&#x2F;template&gt;
+
 &lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator-template=&quot;#my-indicator&quot; timeout=&quot;12&quot;&gt;Custom indicator&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><template id="my-indicator">
+<div class="demo"><div><template id="my-indicator">
   <style>
     :host .indicator {
       position: absolute; /* Highly recommended to set position to absolute */
@@ -163,21 +171,41 @@
       }
     }
   </style>
-  <p class="indicator" hidden><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></p>
+  <p class="indicator" hidden><!-- Need indicator class and hidden attribute -->
+    <span>&#9679;</span>
+    <span>&#9679;</span>
+    <span>&#9679;</span>
+  </p>
 </template>
+
 <a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
-</div>
+</div></div>
 
 
 <h3>Case a has position: absolute</h3>
 
 <p>In this case, indicator is not at expected position. Welcome advice!</p>
 
-<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
+<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
 </code></pre>
-<div class="example"><a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
-</div>
+<div class="demo"><div><a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+</div></div>
 
 
+    <footer>
+      <p xmlns:dct="http://purl.org/dc/terms/">
+        <a rel="license"
+           href="http://creativecommons.org/publicdomain/zero/1.0/">
+          <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+        </a>
+        <br />
+        To the extent possible under law,
+        <a rel="dct:publisher"
+           href="http://kitaitimakoto.github.io/timeout-elements/">
+          <span property="dct:title">Kitaiti, Makoto</span></a>
+        has waived all copyright and related or neighboring rights to
+        <span property="dct:title">Timeout Elements</span>.
+      </p>
+    </footer>
   </body>
 </html>
