@@ -11,12 +11,17 @@ h1 {
 }
 
 pre.code {
-  padding: 1em;
   line-height: 1.5em;
-  background: white;
 }
 
-.example {
+pre.code:before, .demo:before {
+  padding: 0.1em 0.5em;
+  border: dashed 1px gray;
+  border-bottom: none;
+  content: attr(class);
+}
+
+.demo div {
   padding: 1em;
   background: white;
 }

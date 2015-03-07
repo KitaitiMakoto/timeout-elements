@@ -91,8 +91,13 @@ EOC
       }
     }
   </style>
-  <p class="indicator" hidden><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></p>
+  <p class="indicator" hidden><!-- Need indicator class and hidden attribute -->
+    <span>&#9679;</span>
+    <span>&#9679;</span>
+    <span>&#9679;</span>
+  </p>
 </template>
+
 <a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
 EOC
 %>
