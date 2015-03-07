@@ -21,46 +21,41 @@
 
 <h3>Basic</h3>
 (default 3s)
-<pre><code>
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
+<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;timeout anchor&lt;&#x2F;a&gt;
 </code></pre>
-<a is="timeout-anchor" href=".">timeout anchor</a>
-
+<div class="example"><a is="timeout-anchor" href=".">timeout anchor</a>
+</div>
 
 
 <h3>Specifying timeout duration</h3>
 
-<pre><code>
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
+<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
 </code></pre>
-<a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
-
+<div class="example"><a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
+</div>
 
 
 <h3>Regular anchor attributes</h3>
 
-<pre><code>
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
+<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
 </code></pre>
-<a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
-
+<div class="example"><a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
+</div>
 
 
 <h3>Horizontal bar indicator</h3>
 
-<pre><code>
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
+<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator=&quot;horizontal-bar&quot;&gt;horizontal bar indicator&lt;&#x2F;a&gt;
 </code></pre>
-<a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
-
+<div class="example"><a is="timeout-anchor" href="." indicator="horizontal-bar">horizontal bar indicator</a>
+</div>
 
 
 <h3>Custom indicator</h3>
 
 <p>You can define and use your own indicator. Currently JavaScript is not supported.</p>
 
-<pre><code>
-&lt;template id=&quot;my-indicator&quot;&gt;
+<pre class="code"><code>&lt;template id=&quot;my-indicator&quot;&gt;
   &lt;style&gt;
     :host .indicator {
       position: absolute; &#x2F;* Highly recommended to set position to absolute *&#x2F;
@@ -116,7 +111,7 @@
 &lt;&#x2F;template&gt;
 &lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; indicator-template=&quot;#my-indicator&quot; timeout=&quot;12&quot;&gt;Custom indicator&lt;&#x2F;a&gt;
 </code></pre>
-<template id="my-indicator">
+<div class="example"><template id="my-indicator">
   <style>
     :host .indicator {
       position: absolute; /* Highly recommended to set position to absolute */
@@ -171,18 +166,17 @@
   <p class="indicator" hidden><span>&#9679;</span><span>&#9679;</span><span>&#9679;</span></p>
 </template>
 <a is="timeout-anchor" href="." indicator-template="#my-indicator" timeout="12">Custom indicator</a>
-
+</div>
 
 
 <h3>Case a has position: absolute</h3>
 
 <p>In this case, indicator is not at expected position. Welcome advice!</p>
 
-<pre><code>
-&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
+<pre class="code"><code>&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
 </code></pre>
-<a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
-
+<div class="example"><a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+</div>
 
 
   </body>
