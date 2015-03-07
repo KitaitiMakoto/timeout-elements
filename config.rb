@@ -75,3 +75,14 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.remote = 'github'
 end
+
+helpers do
+  def import_link_tag(*sources)
+    options = {
+      :rel => 'import'
+    }.update(sources.extract_options!.symbolize_keys)
+    sources.flatten.inject(ActiveSupport::SafeBuffer.new) do |all, source|
+      all << tag(:link, { :href => asset_path(:html, source) }.update(options))
+    end
+  end
+end
