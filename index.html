@@ -22,15 +22,21 @@
 
 <h2>Timeout Anchor</h2>
 
-<h3>Basic</h3>
-(default 3s)
+<p>This extends <code>a</code>(anchor) element as Timeout Anchor.</p>
+<p>After you hover over Timeout Ancor element for several seconds(3 seconds by default), it will be clicked automatically.</p>
+<p>Live demos follow.</p>
+
+<h3>Basic Usage</h3>
+
+<p>Add <code>is</code> attribute whose value is <code>timeout-anchor</code> to extends <code>a</code> element. Hover over the element and wait for 3 seconds and then you will visit link target(the same page in this example) without click.</p>
+
 <pre class="code"><code class="html">&lt;!-- Declare as &quot;timeout-anchor&quot; --&gt;
-&lt;a is=&quot;timeout-anchor&quot;href=&quot;.&quot;&gt;
+&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;
   timeout anchor
 &lt;&#x2F;a&gt;
 </code></pre>
 <div class="demo"><div><!-- Declare as "timeout-anchor" -->
-<a is="timeout-anchor"href=".">
+<a is="timeout-anchor" href=".">
   timeout anchor
 </a>
 </div></div>
@@ -38,13 +44,17 @@
 
 <h3>Specifying timeout duration</h3>
 
+<p>You may specify timeout duration by <code>timeout</code> attribute.</p>
+
 <pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; timeout=&quot;2&quot;&gt;timeout in 2 seconds&lt;&#x2F;a&gt;
 </code></pre>
 <div class="demo"><div><a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
 </div></div>
 
 
-<h3>Regular anchor attributes</h3>
+<h3>Native anchor attributes</h3>
+
+<p>Timeout Anchor is an Anchor, so you can use attributes for native <code>a</code> like <code>href</code> and <code>target</code>.</p>
 
 <pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot;&gt;opening in timing-anchor window&lt;&#x2F;a&gt;
 </code></pre>
@@ -53,6 +63,8 @@
 
 
 <h3>Horizontal bar indicator</h3>
+
+<p>Indicator of timeout is gray arc spinner by default. You can use blue horizontal bar instead by setting <code>indicator</code> attribute to <code>horizontal-bar</code>. <code>indicator</code> for spinner is <code>spinner</code>.</p>
 
 <pre class="code"><code class="html">&lt;!-- &quot;horizontal-bar&quot; indicator is also available --&gt;
 &lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;
@@ -70,7 +82,7 @@
 
 <h3>Custom indicator</h3>
 
-<p>You can define and use your own indicator. Currently JavaScript is not supported.</p>
+<p>You can define and use your own indicator. Currently JavaScript is not supported. See comments in code below for more details.</p>
 
 <pre class="code"><code class="html">&lt;template id=&quot;my-indicator&quot;&gt;
   &lt;style&gt;
@@ -132,7 +144,8 @@
   &lt;&#x2F;p&gt;
 &lt;&#x2F;template&gt;
 
-&lt;!-- This is passed to document.querySelector() --&gt;
+&lt;!-- Set CSS selector for your template
+     because it is passed to document.querySelector() --&gt;
 &lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;
    indicator-template=&quot;#my-indicator&quot;
    timeout=&quot;12&quot;&gt;
@@ -199,7 +212,8 @@
   </p>
 </template>
 
-<!-- This is passed to document.querySelector() -->
+<!-- Set CSS selector for your template
+     because it is passed to document.querySelector() -->
 <a is="timeout-anchor" href="."
    indicator-template="#my-indicator"
    timeout="12">
