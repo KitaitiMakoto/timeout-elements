@@ -120,6 +120,21 @@ EOC
 
 <p>In this case, indicator is not at expected position. Welcome advice!</p>
 
+<h3>Attributes</h3>
+
+<dl>
+  <dt>Native attributes</dt>
+  <dd><code>&lt;a&gt;</code>'s native attributes such as <code>href</code>, <code>title</code>, <code>target</code> etc. are all available.</dd>
+  <dt><code>state</code></dt>
+  <dd><code>waiting</code> or <code>counting</code>. <code>waiting</code> means mouse pointer is not on the link. <code>counting</code> means mouse pinter is on the link and clicked automatically in secondes specified by <code>timeout</code> attribute.</dd>
+  <dt><code>timeout</code></dt>
+  <dd>Time to the link will be clicked automatically in seconds. Integer or Float. Defaults to <code>3</code>.</dd>
+  <dt><code>indicator</code></dt>
+  <dd>Indicator which is shown when mouse pointer is on the link and <code>state</code> is <code>couting</code>. <code>spinner</code> and <code>horizontal-bar</code> is available currently. Defaults to <code>spinner</code>.</dd>
+  <dt><code>indicator-template</code></dt>
+  <dd>CSS selector which specifies your own custom indicator. Value of this attribute is passed to <code>document.querySelector()</code>, so it must be valid selector.</dd>
+</dl>
+
 <%= example <<EOC
 <a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
 EOC
