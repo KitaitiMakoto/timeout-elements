@@ -6,8 +6,14 @@ title: Timeout Elements
 
 <h2>Timeout Anchor</h2>
 
-<h3>Basic</h3>
-(default 3s)
+<p>This extends <code>a</code>(anchor) element as Timeout Anchor.</p>
+<p>After you hover over Timeout Ancor element for several seconds(3 seconds by default), it will be clicked automatically.</p>
+<p>Live demos follow.</p>
+
+<h3>Basic Usage</h3>
+
+<p>Add <code>is</code> attribute whose value is <code>timeout-anchor</code> to extends <code>a</code> element. Hover over the element and wait for 3 seconds and then you will visit link target(the same page in this example) without click.</p>
+
 <%= example <<EOC
 <!-- Declare as "timeout-anchor" -->
 <a is="timeout-anchor" href=".">
@@ -18,12 +24,16 @@ EOC
 
 <h3>Specifying timeout duration</h3>
 
+<p>You may specify timeout duration by <code>timeout</code> attribute.</p>
+
 <%= example <<EOC
 <a is="timeout-anchor" href="." timeout="2">timeout in 2 seconds</a>
 EOC
 %>
 
-<h3>Regular anchor attributes</h3>
+<h3>Native anchor attributes</h3>
+
+<p>Timeout Anchor is an Anchor, so you can use attributes for native <code>a</code> like <code>href</code> and <code>target</code>.</p>
 
 <%= example <<EOC
 <a is="timeout-anchor" href="." target="timing-anchor">opening in timing-anchor window</a>
@@ -31,6 +41,8 @@ EOC
 %>
 
 <h3>Horizontal bar indicator</h3>
+
+<p>Indicator of timeout is gray arc spinner by default. You can use blue horizontal bar instead by setting <code>indicator</code> attribute to <code>horizontal-bar</code>. <code>indicator</code> for spinner is <code>spinner</code>.</p>
 
 <%= example <<EOC
 <!-- "horizontal-bar" indicator is also available -->
@@ -43,7 +55,7 @@ EOC
 
 <h3>Custom indicator</h3>
 
-<p>You can define and use your own indicator. Currently JavaScript is not supported.</p>
+<p>You can define and use your own indicator. Currently JavaScript is not supported. See comments in code below for more details.</p>
 
 <%= example <<EOC
 <template id="my-indicator">
@@ -106,7 +118,8 @@ EOC
   </p>
 </template>
 
-<!-- This is passed to document.querySelector() -->
+<!-- Set CSS selector for your template
+     because it is passed to document.querySelector() -->
 <a is="timeout-anchor" href="."
    indicator-template="#my-indicator"
    timeout="12">
