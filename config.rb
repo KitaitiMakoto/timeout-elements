@@ -1,4 +1,5 @@
 require 'lib/sprockets2-es6'
+require 'lib/embed_script'
 
 ###
 # Compass
@@ -55,6 +56,8 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+set :html_dir, 'html'
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -77,6 +80,8 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.remote = 'github'
 end
+
+activate :embed_script
 
 helpers do
   def import_link_tag(*sources)
