@@ -4,6 +4,7 @@ body {
   background: lemonchiffon;
   font-family: sans-serif;
   margin: 3em 10%;
+  line-height: 2em;
 }
 
 h1 {
@@ -30,4 +31,19 @@ pre.code:before, .demo:before {
 .demo div {
   padding: 1em;
   background: white;
+}
+
+dl {
+  margin: 0 2em;
+  padding: 1em;
+  border: dashed 1px black;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 2em;
+  margin-bottom: 1em;
 }

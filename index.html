@@ -28,7 +28,7 @@
 
 <h3>Basic Usage</h3>
 
-<p>Add <code>is</code> attribute whose value is <code>timeout-anchor</code> to extends <code>a</code> element. Hover over the element and wait for 3 seconds and then you will visit link target(the same page in this example) without click.</p>
+<p>Add <code>is</code> attribute whose value is <code>timeout-anchor</code> to extend <code>a</code> element. Hover over the element and wait for 3 seconds and then you will visit link target(the same page in this example) without click.</p>
 
 <pre class="code"><code class="html">&lt;!-- Declare as &quot;timeout-anchor&quot; --&gt;
 &lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot;&gt;
@@ -198,26 +198,94 @@
 </div></div>
 
 
-<h3>Case a has position: absolute</h3>
+<h3>Case <code>a</code> has CSS position</h3>
 
 <p>In this case, indicator is not at expected position. Welcome advice!</p>
 
-<pre class="code"><code class="html">&lt;a is=&quot;timeout-anchor&quot; href=&quot;.&quot; target=&quot;timing-anchor&quot; style=&quot;position: absolute;&quot;&gt;has position: absolute;&lt;&#x2F;a&gt;
+<h3>Attributes</h3>
+
+<dl>
+  <dt>Native attributes</dt>
+  <dd><code>&lt;a&gt;</code>'s native attributes such as <code>href</code>, <code>title</code>, <code>target</code> etc. are all available.</dd>
+  <dt><code>state</code></dt>
+  <dd><code>waiting</code> or <code>counting</code>. <code>waiting</code> means mouse pointer is not on the link. <code>counting</code> means mouse pinter is on the link and clicked automatically in secondes specified by <code>timeout</code> attribute.</dd>
+  <dt><code>timeout</code></dt>
+  <dd>Time to the link will be clicked automatically in seconds. Integer or Float. Defaults to <code>3</code>.</dd>
+  <dt><code>indicator</code></dt>
+  <dd>Indicator which is shown when mouse pointer is on the link and <code>state</code> is <code>couting</code>. <code>spinner</code> and <code>horizontal-bar</code> is available currently. Defaults to <code>spinner</code>.</dd>
+  <dt><code>indicator-template</code></dt>
+  <dd>CSS selector which specifies your own custom indicator. Value of this attribute is passed to <code>document.querySelector()</code>, so it must be valid selector.</dd>
+</dl>
+
+<h3>Events</h3>
+
+<p>Timeout Anchor fires two types of custom events.</p>
+
+<dl>
+  <dt><code>countdown</code></dt>
+  <dd>Fired when mouse pointer becomes on the link and count down started.</dd>
+  <dt><code>countdowncanceled</code></dt>
+  <dd>Fired when mouse pointer becomes out of the link and count down stopped.</dd>
+</dl>
+
+<pre class="code"><code class="html">&lt;p&gt;Event(see console for event details): &lt;span id=&quot;event-result&quot;&gt;Not fired.&lt;&#x2F;span&gt;&lt;&#x2F;p&gt;
+&lt;a is=&quot;timeout-anchor&quot; id=&quot;fire-events&quot; href=&quot;.&quot; timeout=&quot;12&quot;&gt;
+  Timeout Anchor may fire &lt;code&gt;countdown&lt;&#x2F;code&gt; or &lt;code&gt;countdowncanceld&lt;&#x2F;code&gt; events.
+&lt;&#x2F;a&gt;
+&lt;script&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+        var result = document.getElementById(&quot;event-result&quot;);
+        var anchor = document.getElementById(&quot;fire-events&quot;);
+        [&quot;countdown&quot;, &quot;countdowncanceled&quot;].forEach(function(eventName) {
+            anchor.addEventListener(eventName, function(event) {
+                result.textContent = eventName;
+                console.info(eventName);
+                console.dir(event);
+            });
+        });
+    });
+&lt;&#x2F;script&gt;
 </code></pre>
-<div class="demo"><div><a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+<div class="demo"><div><p>Event(see console for event details): <span id="event-result">Not fired.</span></p>
+<a is="timeout-anchor" id="fire-events" href="." timeout="12">
+  Timeout Anchor may fire <code>countdown</code> or <code>countdowncanceld</code> events.
+</a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var result = document.getElementById("event-result");
+        var anchor = document.getElementById("fire-events");
+        ["countdown", "countdowncanceled"].forEach(function(eventName) {
+            anchor.addEventListener(eventName, function(event) {
+                result.textContent = eventName;
+                console.info(eventName);
+                console.dir(event);
+            });
+        });
+    });
+</script>
 </div></div>
 
+
+<h3>Installation</h3>
+
+<p>Write this in your HTML. But note that this URI is not stable.</p>
+
+<pre class="html"><code>&lt;link href="https://kitaitimakoto.github.io/timeout-elements/html/timeout-anchor.html" rel="import" /&gt;</code></pre>
+
+<h3>Source code</h3>
+
+<p>Visit the <a href="https://github.com/KitaitiMakoto/timeout-elements" is="timeout-anchor">repository</a> on GitHub.(This link is alsow Timeout Anchor, yay!)</p>
 
     <footer>
       <p xmlns:dct="http://purl.org/dc/terms/">
         <a rel="license"
-           href="http://creativecommons.org/publicdomain/zero/1.0/">
-          <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+           href="https://creativecommons.org/publicdomain/zero/1.0/">
+          <img src="https://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
         </a>
         <br />
         To the extent possible under law,
         <a rel="dct:publisher"
-           href="http://github.com/KitaitiMakoto">
+           href="https://github.com/KitaitiMakoto">
           <span property="dct:title">Kitaiti, Makoto</span></a>
         has waived all copyright and related or neighboring rights to
         <span property="dct:title">Timeout Elements</span>.
