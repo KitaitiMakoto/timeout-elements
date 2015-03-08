@@ -10,6 +10,12 @@ h1 {
   padding: 3em 0;
 }
 
+code {
+  background: #f0f0f0;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
 pre.code {
   line-height: 1.5em;
 }
