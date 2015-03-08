@@ -32,3 +32,18 @@ pre.code:before, .demo:before {
   padding: 1em;
   background: white;
 }
+
+dl {
+  margin: 0 2em;
+  padding: 1em;
+  border: dashed 1px black;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
