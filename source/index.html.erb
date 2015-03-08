@@ -135,7 +135,34 @@ EOC
   <dd>CSS selector which specifies your own custom indicator. Value of this attribute is passed to <code>document.querySelector()</code>, so it must be valid selector.</dd>
 </dl>
 
+<h3>Events</h3>
+
+<p>Timeout Anchor fires two types of custom events.</p>
+
+<dl>
+  <dt><code>countdown</code></dt>
+  <dd>Fired when mouse pointer becomes on the link and count down started.</dd>
+  <dt><code>countdowncanceled</code></dt>
+  <dd>Fired when mouse pointer becomes out of the link and count down stopped.</dd>
+</dl>
+
 <%= example <<EOC
-<a is="timeout-anchor" href="." target="timing-anchor" style="position: absolute;">has position: absolute;</a>
+<p>Event(see console for event details): <span id="event-result">Not fired.</span></p>
+<a is="timeout-anchor" id="fire-events" href="." timeout="12">
+  Timeout Anchor may fire <code>countdown</code> or <code>countdowncanceld</code> events.
+</a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var result = document.getElementById("event-result");
+        var anchor = document.getElementById("fire-events");
+        ["countdown", "countdowncanceled"].forEach(function(eventName) {
+            anchor.addEventListener(eventName, function(event) {
+                result.textContent = eventName;
+                console.info(eventName);
+                console.dir(event);
+            });
+        });
+    });
+</script>
 EOC
 %>
