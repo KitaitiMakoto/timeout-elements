@@ -110,7 +110,7 @@
         registry.delete(this);
     };
 
-    document.registerElement("timeout-anchor", {
+    self.HTMLTimeoutAnchorElement = document.registerElement("timeout-anchor", {
         prototype: element,
         extends: "a"
     });
