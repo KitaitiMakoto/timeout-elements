@@ -110,9 +110,6 @@
         registry.delete(this);
     };
 
-    element.attributeChangedCallback = function(attrName, oldValue, newValue, namespace) {
-    };
-
     document.registerElement("timeout-anchor", {
         prototype: element,
         extends: "a"
