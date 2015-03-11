@@ -100,13 +100,13 @@
             }
         }
         this.shadowRoot.appendChild(indicatorTemplate.content.cloneNode(true));
-        this.addEventListener("mouseover", startCountdown.bind(this));
-        this.addEventListener("mouseleave", cancelCountdown.bind(this));
+        this.addEventListener("mouseenter", startCountdown.bind(this));
+        this.addEventListener("mouseout", cancelCountdown.bind(this));
     };
 
     element.detachedCallback = function() {
-        this.removeEventListener("mouseover", startCountdown.bind(this));
-        this.removeEventListener("mouseleave", cancelCountdown.bind(this));
+        this.removeEventListener("mouseenter", startCountdown.bind(this));
+        this.removeEventListener("mouseout", cancelCountdown.bind(this));
         registry.delete(this);
     };
 
