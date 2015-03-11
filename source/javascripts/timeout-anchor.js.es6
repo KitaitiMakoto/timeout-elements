@@ -4,31 +4,6 @@
     var registry = new WeakMap;
     var defaultTimeout = 3;
 
-    // Should wait for several hundreds milliseconds to start?
-    var startCountdown = function(event) {
-        var props = registry.get(this);
-        if (props.state === "counting") {
-            return;
-        }
-        props.state = "counting";
-        this.dispatchEvent(new CustomEvent("countdown"));
-        if (! isFinite(this.timeout)) {
-            return;
-        }
-        this.showIndicator(event.pageX, event.pageY);
-        props.timeoutId = setTimeout(this.click.bind(this), this.timeout * 1000);
-    };
-    var cancelCountdown = function(event) {
-        var props = registry.get(this);
-        if (props.state === "waiting") {
-            return;
-        }
-        props.state = "waiting";
-        this.hideIndicator();
-        this.dispatchEvent(new CustomEvent("countdowncanceled"));
-        clearTimeout(props.timeoutId);
-    };
-
     Object.defineProperties(element, {
         "state": {
             enumerable: true,
@@ -62,6 +37,32 @@
             }
         }
     });
+
+    // Should wait for several hundreds milliseconds to start?
+    element.startCountdown = function(event) {
+        var props = registry.get(this);
+        if (props.state === "counting") {
+            return;
+        }
+        props.state = "counting";
+        this.dispatchEvent(new CustomEvent("countdown"));
+        if (! isFinite(this.timeout)) {
+            return;
+        }
+        this.showIndicator(event.pageX, event.pageY);
+        props.timeoutId = setTimeout(this.click.bind(this), this.timeout * 1000);
+    };
+
+    element.cancelCountdown = function(event) {
+        var props = registry.get(this);
+        if (props.state === "waiting") {
+            return;
+        }
+        props.state = "waiting";
+        this.hideIndicator();
+        this.dispatchEvent(new CustomEvent("countdowncanceled"));
+        clearTimeout(props.timeoutId);
+    };
 
     element.showIndicator = function(x, y) {
         var indicator = this.shadowRoot.getElementsByClassName("indicator")[0]
@@ -100,13 +101,13 @@
             }
         }
         this.shadowRoot.appendChild(indicatorTemplate.content.cloneNode(true));
-        this.addEventListener("mouseenter", startCountdown.bind(this));
-        this.addEventListener("mouseout", cancelCountdown.bind(this));
+        this.addEventListener("mouseenter", this.startCountdown);
+        this.addEventListener("mouseout", this.cancelCountdown);
     };
 
     element.detachedCallback = function() {
-        this.removeEventListener("mouseenter", startCountdown.bind(this));
-        this.removeEventListener("mouseout", cancelCountdown.bind(this));
+        this.removeEventListener("mouseenter", this.startCountdown);
+        this.removeEventListener("mouseout", this.cancelCountdown);
         registry.delete(this);
     };
 
